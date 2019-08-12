@@ -14,16 +14,16 @@ function About() {
   return (
     <div >
       <header>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6 col-sm-6 text-left">
-                        <div class="header-logo">
+            <div className="container">
+                <div className="row align-items-center">
+                    <div className="col-md-6 col-sm-6 text-left">
+                        <div className="header-logo">
                             <img src={LogoAlta} width="133.52px"/>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 align-items-center">
-                        <div class="float-right">
-                            <div class="header-menu">
+                    <div className="col-md-6 col-sm-6 align-items-center">
+                        <div className="float-right">
+                            <div className="header-menu">
                                     <nav>
                                             <ul>
                                             <li><a href="home.html">HOME</a></li>
@@ -38,25 +38,25 @@ function About() {
                 </div>
             </div>
     </header>
-    <div class="container-fluid about-me">
-            <div class="container">
+    <div className="container-fluid about-me">
+            <div className="container">
                     <div>
                         ABOUT ME.
                     </div>
             </div>
     </div>
-    <div class="container aku">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="row">
-                    <div class="hello-me">
+    <div className="container aku">
+        <div className="row">
+            <div className="col-md-8">
+                <div className="row">
+                    <div className="hello-me">
                         <p>Hello! I’m Anne Sullivan, a full-stack engineer based in Malang, IDN who enjoys building things that live on the internet. I develop exceptional websites and web apps that provide intuitive, pixel-perfect user interfaces with efficient and modern backends.</p>
                         <p>Shortly after graduating from Alterra Academy, I joined the engineering team at Alterra where I work on a wide variety of interesting and meaningful projects on a daily basis.</p>
                         <p>Here’s few technologies I’ve been working with recently :</p>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="table-skill">
+                <div className="row">
+                    <div className="table-skill">
                         <table>
                             <tbody>
                                 <tr>
@@ -84,12 +84,12 @@ function About() {
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="text-center">
-                    <div class="gambar">
-                            <img class="gambar" src={matthew} width="249" height="248" />
+            <div className="col-md-4">
+                <div className="text-center">
+                    <div className="gambar">
+                            <img className="gambar" src={matthew} width="249" height="248" />
                     </div>
-                    <div class="dot-dot">
+                    <div className="dot-dot">
                             <img src={img_dot}/>
                     </div>
                 </div>
@@ -97,14 +97,14 @@ function About() {
     </div>
     </div>
     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-4 text-left">
-                    <div class="footer-logo">
+        <div className="container">
+            <div className="row">
+                <div className="col-md-6 col-4 text-left">
+                    <div className="footer-logo">
                         <img src={LogoAlta2} width="109.54px"/>
                     </div>
                 </div>
-                <div class="col-md-3 col-4 borderright1px" >
+                <div className="col-md-3 col-4 borderright1px" >
                     {/* style="border-right: 1px solid #FFFFFF;" */}
                     <h6>Social Media</h6>
                         <a href="#"><img src={ic_fb}/></a>
@@ -112,8 +112,8 @@ function About() {
                         <a href="#"><img src={ic_instagram}/></a>
                         <a href="#"><img src={ic_linkedin}/></a>
                 </div>
-                <div class="col-md-3 col-4">
-                    <div class="footer-copyright text-right">
+                <div className="col-md-3 col-4">
+                    <div className="footer-copyright text-right">
                         <h6>Copyright © 2019 Alterra</h6>
                     </div>
                 </div>
