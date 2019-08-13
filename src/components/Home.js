@@ -1,9 +1,9 @@
 import React from 'react';
-import LogoAlta from '../img/logo-ALTA.png';
+// import LogoAlta from '../img/logo-ALTA.png';
 import '../css/fromless.css';
 import matthew from '../img/matthew-hamilton-tNCH0sKSZbA-unsplash.jpg';
 import HeaderAlta from '../header/HeaderAlta';
-import Header from '../header/Header';
+// import Header from '../header/Header';
 
 function Home() {
   return (
