@@ -40,7 +40,7 @@ class TopArticle extends React.Component {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{item.title}</h5>
-                  <p className="card-text">{item.content}</p>
+                  <p className="card-text">{item.description}</p>
                   <a href={item.url} className="btn btn-primary">
                     Selengkapnya
                   </a>

@@ -9,14 +9,14 @@ import axios from 'axios';
 
 const apiKey = '993a620765884d3fb2d99590b3b2b683';
 const baseUrl = 'https://newsapi.org/v2/';
-const newsUrl = `${baseUrl}everything?q=bitcoin&apiKey=${apiKey}`;
+const newsUrl = `${baseUrl}everything?q=indonesia&apiKey=${apiKey}`;
 
-class App extends React.Component {
+class News extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       listNews: [],
-      username: '',
+      keyword: 'tech',
       isiLogin: false,
     };
   }
@@ -24,9 +24,9 @@ class App extends React.Component {
   eventChange = event => {
     const self = this;
     event.preventDefault();
-
+    this.setState({ keyword: event.target.value });
     var urlBaru = `${baseUrl}everything?q=${
-      event.target.value
+      this.state.keyword
     }&apiKey=${apiKey}`;
 
     axios.get(urlBaru).then(function(response) {
@@ -43,17 +43,17 @@ class App extends React.Component {
     });
   };
 
-  // componentDidMount = () => {
-  //   console.log('apa');
-  //   const self = this;
-  //   axios.get(newsUrl).then(function(response) {
-  //     self
-  //       .setState({ listNews: response.data.articles })
-  //       .catch(function(error) {
-  //         console.log(error);
-  //       });
-  //   });
-  // };
+  componentDidMount = () => {
+    console.log('apa');
+    const self = this;
+    axios.get(newsUrl).then(function(response) {
+      self
+        .setState({ listNews: response.data.articles })
+        .catch(function(error) {
+          console.log(error);
+        });
+    });
+  };
 
   render() {
     // console.log('render');
@@ -77,4 +77,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default News;

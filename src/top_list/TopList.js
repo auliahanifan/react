@@ -1,31 +1,31 @@
 // eslint-disable-next-line
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 const apiKey = '993a620765884d3fb2d99590b3b2b683';
 const baseUrl = 'https://newsapi.org/v2/';
 const newsUrl = `${baseUrl}everything?q=bitcoin&apiKey=${apiKey}`;
 
 class TopList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      listNews: [],
-      headlines: [],
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     listNews: this.props.data,
+  //     headlines: [],
+  //   };
+  // }
 
-  componentDidMount = () => {
-    console.log('apa');
-    const self = this;
-    axios.get(newsUrl).then(function(response) {
-      self
-        .setState({ listNews: response.data.articles })
-        .catch(function(error) {
-          console.log(error);
-        });
-    });
-  };
+  // componentDidMount = () => {
+  //   console.log('apa');
+  //   const self = this;
+  //   axios.get(newsUrl).then(function(response) {
+  //     self
+  //       .setState({ listNews: response.data.articles })
+  //       .catch(function(error) {
+  //         console.log(error);
+  //       });
+  //   });
+  // };
 
   render() {
     return (
@@ -43,10 +43,14 @@ class TopList extends React.Component {
               </div>
             </li>
 
-            {this.state.listNews.map((item, index) => {
+            {this.props.data.map((item, index) => {
               if (index < 5) {
+                console.log(index);
                 return (
-                  <li className="list-group-item">
+                  <li
+                    className="list-group-item"
+                    key={index.toString()}
+                  >
                     <div className="row ">
                       <div className="col-6">{index + 1}</div>
                     </div>
