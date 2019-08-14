@@ -4,7 +4,7 @@ import {
   Switch,
   BrowserRouter as Router,
 } from 'react-router-dom';
-import Header from './header/Header';
+import Header from '../header/Header';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import Profile from './Profile';
@@ -15,8 +15,9 @@ import { Redirect } from 'react-router-dom';
 
 class Routing extends React.Component {
   postSignOut = () => {
-    const self = this;
+    // const self = this;
     localStorage.removeItem('is_login');
+    // localStorage.setItem('is_login', null);
 
     // return <Redirect to={{ pathname: '/' }} />;
     // self.props.history.push('/');
@@ -25,7 +26,7 @@ class Routing extends React.Component {
   render() {
     return (
       <Router>
-        <Header searchChange="" postSignout={this.postSignOut()} />
+        <Header searchChange="" postSignOut={this.postSignOut()} />
         <Switch>
           <Route exact path="/" component={News} />
           <Route path="/signin" component={SignIn} />

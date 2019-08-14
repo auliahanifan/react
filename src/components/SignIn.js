@@ -35,6 +35,7 @@ class SignIn extends React.Component {
   };
 
   render() {
+    // console.log(is_login);
     if (is_login !== null) {
       return <Redirect to={{ pathname: '/profile' }} />;
     } else {

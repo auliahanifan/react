@@ -13,6 +13,15 @@ class Header extends React.Component {
       value: '',
     };
   }
+  postSignout = () => {
+    // const self = this;
+    localStorage.removeItem('is_login');
+    localStorage.removeItem('email');
+    // localStorage.setItem('is_login', null);
+
+    // return <Redirect to={{ pathname: '/' }} />;
+    // self.props.history.push('/');
+  };
 
   render() {
     return (
@@ -72,12 +81,16 @@ class Header extends React.Component {
             </ul>
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
-                <Link to="/" onClick={this.props.postSignout}>
+                <Link
+                  to="/"
+                  onClick={() => {
+                    this.postSignout();
+                  }}
+                >
                   Sign Out <span className="sr-only">(current)</span>
                 </Link>
               </li>
             </ul>
-
             <form className="form-inline my-2 my-lg-0">
               <input
                 className="form-control mr-sm-2"

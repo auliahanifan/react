@@ -2,9 +2,9 @@ import React from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 // import Home from './components/Home';
-import Header from './header/Header';
-import TopList from './top_list/TopList';
-import TopArticle from './top_article/TopArticle';
+import Header from '../header/Header';
+import TopList from '../top_list/TopList';
+import TopArticle from '../top_article/TopArticle';
 import axios from 'axios';
 
 const apiKey = '993a620765884d3fb2d99590b3b2b683';
