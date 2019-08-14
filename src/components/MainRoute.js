@@ -4,19 +4,25 @@ import {
   Switch,
   BrowserRouter as Router,
 } from 'react-router-dom';
-import Header from '../header/Header';
-import SignUp from './SignUp';
+import HeaderBase from '../header/HeaderBase';
+// import SignUp from './SignUp';
 import SignIn from './SignIn';
 import Profile from './Profile';
 import News from './News';
-import { Redirect } from 'react-router-dom';
+import { store } from '../store';
+import { connect } from 'unistore/react';
+import { actions } from '../store';
+
+// import { Redirect } from 'react-router-dom';
 
 // const is_login = JSON.parse(localStorage.getItem('is_login'));
 
 class Routing extends React.Component {
   postSignOut = () => {
     // const self = this;
-    localStorage.removeItem('is_login');
+    console.log(this.props.is_login);
+    this.props.setLogin(false);
+    console.log(this.props.is_login);
     // localStorage.setItem('is_login', null);
 
     // return <Redirect to={{ pathname: '/' }} />;
@@ -26,7 +32,7 @@ class Routing extends React.Component {
   render() {
     return (
       <Router>
-        <Header searchChange="" postSignOut={this.postSignOut()} />
+        <HeaderBase searchChange="" />
         <Switch>
           <Route exact path="/" component={News} />
           <Route path="/signin" component={SignIn} />
@@ -39,4 +45,7 @@ class Routing extends React.Component {
   }
 }
 
-export default Routing;
+export default connect(
+  'is_login',
+  actions,
+)(Routing);

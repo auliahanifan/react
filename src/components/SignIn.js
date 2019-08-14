@@ -1,11 +1,14 @@
 import React from 'react';
 import axios from 'axios';
 import { withRouter, Redirect } from 'react-router-dom';
+import { store } from '../store';
+import { connect } from 'unistore/react';
+import { actions } from '../store';
 
-const is_login = JSON.parse(localStorage.getItem('is_login'));
+// const is_login = JSON.parse(localStorage.getItem('is_login'));
 
 class SignIn extends React.Component {
-  state = { username: '', password: '' };
+  state = { email: '', password: '' };
   changeInput = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -18,15 +21,19 @@ class SignIn extends React.Component {
     };
     const self = this;
     axios
-      .post('https://auliapoint.free.beeceptor.com/login', data)
+      .post('https://auliapoint3.free.beeceptor.com/login', data)
       .then(function(response) {
+        console.log(self.props.is_login);
         console.log(response.data);
         if (response.data.hasOwnProperty('api_key')) {
-          localStorage.setItem('api_key', response.data.api_key);
-          localStorage.setItem('is_login', true);
-          localStorage.setItem('full_name', response.data.full_name);
-          localStorage.setItem('email', response.data.email);
+          console.log(self.props.is_login);
+          self.props.setApiKey(response.data.api_key);
+          self.props.setName(response.data.full_name);
+          this.props.setLogin(true);
+
+          self.props.setEmail(response.data.email);
           self.props.history.push('/profile');
+          // console.log(this.props.api_key);
         }
       })
       .catch(function(error) {
@@ -35,8 +42,9 @@ class SignIn extends React.Component {
   };
 
   render() {
+    console.log(this.props.is_login);
     // console.log(is_login);
-    if (is_login !== null) {
+    if (this.props.is_login === true) {
       return <Redirect to={{ pathname: '/profile' }} />;
     } else {
       return (
@@ -88,4 +96,7 @@ class SignIn extends React.Component {
   }
 }
 
-export default withRouter(SignIn);
+export default connect(
+  'email, full_name, is_login',
+  actions,
+)(withRouter(SignIn));

@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const apiKey = '993a620765884d3fb2d99590b3b2b683';
 const baseUrl = 'https://newsapi.org/v2/';
-const newsUrl = `${baseUrl}everything?q=bitcoin&apiKey=${apiKey}`;
+// const newsUrl = `${baseUrl}everything?q=bitcoin&apiKey=${apiKey}`;
 
 class App extends React.Component {
   constructor(props) {
@@ -38,9 +38,9 @@ class App extends React.Component {
     });
     console.log(event.target.value);
     console.log(urlBaru);
-    this.state.listNews.map(() => {
-      console.log('a');
-    });
+    // this.state.listNews.map(() => {
+    //   console.log('a');
+    // });
   };
 
   // componentDidMount = () => {

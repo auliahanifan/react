@@ -38,9 +38,9 @@ class News extends React.Component {
     });
     console.log(event.target.value);
     console.log(urlBaru);
-    this.state.listNews.map(() => {
-      console.log('a');
-    });
+    // this.state.listNews.map(() => {
+    //   console.log('a');
+    // });
   };
 
   componentDidMount = () => {

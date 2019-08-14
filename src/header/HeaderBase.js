@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'unistore/react';
 import { actions } from '../store';
 
-class Header extends React.Component {
+class HeaderBase extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -90,22 +90,6 @@ class Header extends React.Component {
                 </Link>
               </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-              <input
-                className="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-                // value={this.state.value}
-                onChange={this.props.searchChange}
-              />
-              <button
-                className="btn btn-outline-success my-2 my-sm-0"
-                type="submit"
-              >
-                Search
-              </button>
-            </form>
           </div>
         </nav>
       </div>
@@ -115,4 +99,4 @@ class Header extends React.Component {
 export default connect(
   'email, full_name, is_login',
   actions,
-)(Header);
+)(HeaderBase);
