@@ -21,7 +21,7 @@ class SignIn extends React.Component {
     };
     const self = this;
     axios
-      .post('https://auliapoint3.free.beeceptor.com/login', data)
+      .post('https://auliapoint5.free.beeceptor.com/login', data)
       .then(function(response) {
         console.log(self.props.is_login);
         console.log(response.data);
@@ -29,7 +29,8 @@ class SignIn extends React.Component {
           console.log(self.props.is_login);
           self.props.setApiKey(response.data.api_key);
           self.props.setName(response.data.full_name);
-          this.props.setLogin(true);
+          console.log(self.props.api_key);
+          self.props.setLogin(true);
 
           self.props.setEmail(response.data.email);
           self.props.history.push('/profile');
