@@ -6,6 +6,8 @@ import Header from '../header/Header';
 import TopList from '../top_list/TopList';
 import TopArticle from '../top_article/TopArticle';
 import axios from 'axios';
+import { connect } from 'unistore/react';
+import { actions } from '../store';
 
 const apiKey = '993a620765884d3fb2d99590b3b2b683';
 const baseUrl = 'https://newsapi.org/v2/';
@@ -14,45 +16,66 @@ const newsUrl = `${baseUrl}everything?q=indonesia&apiKey=${apiKey}`;
 class News extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      listNews: [],
-      keyword: 'tech',
-      isiLogin: false,
-    };
   }
 
-  eventChange = event => {
-    const self = this;
-    event.preventDefault();
-    this.setState({ keyword: event.target.value });
-    var urlBaru = `${baseUrl}everything?q=${
-      this.state.keyword
-    }&apiKey=${apiKey}`;
+  // handleSignOut = () => {
+  //   this.props.setLogin(false);
+  //   console.log('ini login', this.props.is_login);
+  //   this.props.history.push('/');
+  // };
 
-    axios.get(urlBaru).then(function(response) {
-      self
-        .setState({ listNews: response.data.articles })
-        .catch(function(error) {
-          console.log(error);
-        });
-    });
-    console.log(event.target.value);
-    console.log(urlBaru);
-    // this.state.listNews.map(() => {
-    //   console.log('a');
-    // });
+  eventChange = event => {
+    event.preventDefault();
+    axios
+      .get(
+        'https://newsapi.org/v2/everything?q=' +
+          event.target.value +
+          `&apiKey=${apiKey}`,
+      )
+      .then(response => {
+        this.props.setValue(response.data.articles);
+        console.log(response);
+        // console.log(this.state.data);
+      })
+      .catch(error => {
+        console.log('terdapat eror ini :', error);
+      });
   };
 
   componentDidMount = () => {
-    console.log('apa');
-    const self = this;
-    axios.get(newsUrl).then(function(response) {
-      self
-        .setState({ listNews: response.data.articles })
-        .catch(function(error) {
-          console.log(error);
+    axios
+      .get(
+        'https://newsapi.org/v2/everything?q=' +
+          this.props.endpoint +
+          `&from=2019-08-14&sortBy=publishedAt&apiKey=${apiKey}`,
+      )
+      .then(response => {
+        this.props.setValue(response.data.articles);
+        console.log(response);
+        // console.log(this.state.data);
+      })
+      .catch(error => {
+        console.log('terdapat eror ini :', error);
+      });
+  };
+
+  componentDidUpdate = prevProps => {
+    if (prevProps.endpoint !== this.props.endpoint) {
+      axios
+        .get(
+          'https://newsapi.org/v2/everything?q=' +
+            this.props.endpoint +
+            `&from=2019-08-14&sortBy=publishedAt&apiKey=${apiKey}`,
+        )
+        .then(response => {
+          this.props.setValue(response.data.articles);
+          console.log(response);
+          // console.log(this.state.data);
+        })
+        .catch(error => {
+          console.log('terdapat eror ini :', error);
         });
-    });
+    }
   };
 
   render() {
@@ -65,7 +88,7 @@ class News extends React.Component {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-5">
-              <TopList data={this.state.listNews} />
+              <TopList data={this.props.values} />
             </div>
             <div className="col-7">
               <TopArticle />
@@ -77,4 +100,9 @@ class News extends React.Component {
   }
 }
 
-export default News;
+// export default News;
+
+export default connect(
+  'email, full_name, is_login, values, keyword',
+  actions,
+)(News);

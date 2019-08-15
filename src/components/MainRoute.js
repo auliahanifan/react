@@ -8,6 +8,7 @@ import HeaderBase from '../header/HeaderBase';
 // import SignUp from './SignUp';
 import SignIn from './SignIn';
 import Profile from './Profile';
+import Category from './Category';
 import News from './News';
 import { store } from '../store';
 import { connect } from 'unistore/react';
@@ -36,6 +37,8 @@ class Routing extends React.Component {
         <Switch>
           <Route exact path="/" component={News} />
           <Route path="/signin" component={SignIn} />
+          <Route path="/category/:source_name" component={Category} />
+
           <Route path="/signup" component={SignIn} />
           <Route path="/profile" component={Profile} />
           {/* <Route path ="/signup" component= {}/> */}

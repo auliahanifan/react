@@ -59,32 +59,6 @@ class Header extends React.Component {
                 Search
               </button>
             </form>
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item text-center active">
-                <span className="sr-only">(current)</span>
-              </li>
-            </ul>
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <Link to="/category/business">
-                  Business <span className="sr-only">(current)</span>
-                </Link>{' '}
-              </li>
-            </ul>
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <Link to="/category/sports">
-                  Sports <span className="sr-only">(current)</span>
-                </Link>{' '}
-              </li>
-            </ul>
-            <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <Link to="/category/asia">
-                  Asia <span className="sr-only">(current)</span>
-                </Link>{' '}
-              </li>
-            </ul>
           </div>
         </nav>
       </div>
